@@ -1,6 +1,7 @@
 #include "PhysicsGame.h"
 #include "Input.h"
 #include "Font.h"
+#include "Sphere.h"
 #include "Gizmos.h"
 #include <glm/ext.hpp>
 
@@ -14,10 +15,19 @@ bool PhysicsGame::startup()
 	m_renderer = new aie::Renderer2D();
 	setBackgroundColour(2.8f, 0.0f, 1.7f);
 
+	m_font = new aie::Font("../bin/font/consolas.ttf", 32);
+
 	m_scene = new PhysicsScene();
 	m_scene->setTimeStep(0.01f);
 
-	m_font = new aie::Font("../bin/font/consolas.ttf", 32);
+	//Sets the gravity in the scene
+	m_scene->setGravity(glm::vec2{ 0.0f, 0.0f });
+	
+	//Creates a ball (does not add it to the scene)
+	Sphere* ball = new Sphere(glm::vec2(), glm::vec2(), 10, 10, glm::vec4(2.8f, 2.0f, 5.0f, 1.0f));
+
+	//Adds the ball to the scene
+	m_scene->addActor(ball);
 
 	return true;
 }
