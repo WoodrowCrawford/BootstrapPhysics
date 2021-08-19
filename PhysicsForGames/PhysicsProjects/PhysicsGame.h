@@ -6,6 +6,7 @@
 class PhysicsGame : public aie::Application
 {
 public:
+
 	PhysicsGame() {}
 	virtual ~PhysicsGame() {}
 

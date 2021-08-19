@@ -5,10 +5,17 @@
 #include <glm/ext.hpp>
 
 
+
 bool PhysicsGame::startup()
 {
+	//Sets the maximum # of lines, triangles, 2d lines, etc...
+	aie::Gizmos::create(225U, 225U, 65535U, 65535U);
+
 	m_renderer = new aie::Renderer2D();
 	setBackgroundColour(2.8f, 0.0f, 1.7f);
+
+	m_scene = new PhysicsScene();
+	m_scene->setTimeStep(0.01f);
 
 	m_font = new aie::Font("../bin/font/consolas.ttf", 32);
 
@@ -19,12 +26,17 @@ void PhysicsGame::shutdown()
 {
 	delete m_font;
 	delete m_renderer;
+	delete m_scene;
 }
 
 void PhysicsGame::update(float deltaTime)
 {
 	//Get the input instance
 	aie::Input* input = aie::Input::getInstance();
+
+	aie::Gizmos::clear();
+
+	m_scene->update(deltaTime);
 
 	//Exit on Esc
 	if (input->isKeyDown(aie::INPUT_KEY_ESCAPE)) 
@@ -38,6 +50,15 @@ void PhysicsGame::draw()
 	clearScreen();
 
 	m_renderer->begin();
+
+	//Draws the scene
+	m_scene->draw();
+
+	//Draw the Gizmos
+	static float aspectRatio = 16.0f / 9.0f;
+
+	//left right bottom top zNear zFar
+	aie::Gizmos::draw2D(glm::ortho<float>(-100, 100, -100 / aspectRatio, 100 / aspectRatio, -1.0f, 1.0f));
 
 	//Draw FPS
 	char fps[32];

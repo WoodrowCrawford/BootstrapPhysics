@@ -7,6 +7,9 @@ class PhysicsObject;
 
 class PhysicsScene
 {
+
+public:
+
 	PhysicsScene();
 	~PhysicsScene();
 
