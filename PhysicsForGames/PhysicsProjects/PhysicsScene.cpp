@@ -82,7 +82,8 @@ bool PhysicsScene::sphereToSphere(Sphere* sphere1, Sphere* sphere2)
 		if (glm::abs(distance) < sphere1->getRadius() + sphere2->getRadius())
 		{
 			//A way to do it in one line
-			sphere1->applyForceToOther(sphere2, { 10.0f, 20.0f });
+			//Makes the balls apply a force to each other with a given value
+			sphere1->applyForceToOther(sphere2, { 12.0f, 12.0f });
 
 
 			//This will be commented out while the above code is active
@@ -90,8 +91,6 @@ bool PhysicsScene::sphereToSphere(Sphere* sphere1, Sphere* sphere2)
 			  //sphere2->applyForce(-(sphere2->getVelocity() * sphere2->getMass()));
 
 
-			//sphere1->applyForce(-(sphere1->getVelocity() * sphere1->getMass()));
-			//sphere2->applyForce(-(sphere2->getVelocity() * sphere2->getMass()));
 			return true;
 
 			
