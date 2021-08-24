@@ -14,5 +14,5 @@ Sphere::~Sphere()
 void Sphere::draw()
 {
 	//Change the # to increase or decrease the amount of edges
-	aie::Gizmos::add2DCircle(getPosition(), m_radius, 9, m_color);
+	aie::Gizmos::add2DCircle(getPosition(), m_radius, m_radius * 4, m_color);
 }
