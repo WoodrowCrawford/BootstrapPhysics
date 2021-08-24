@@ -25,12 +25,12 @@ bool PhysicsGame::startup()
 	m_scene->setGravity(glm::vec2{ 0.0f, -10.0f });
 	
 
-	//Adds balls to the scene
+	//Creates the balls
 	Sphere* ball1 = new Sphere(glm::vec2(-25, 0), glm::vec2(), 2, 10, glm::vec4(2.8f, 2.0f, 5.0f, 1.0f));
 	Sphere* ball2 = new Sphere(glm::vec2(25, 0), glm::vec2(), 2, 10, glm::vec4(1.9f, 0.0f, 0.0f, 1.9f));
 
-	//Adds the ground
-	Plane* ground = new Plane(glm::vec2(0.0f, 1.0f), -30, glm::vec4(1.0f, 0.3f, 0.1f, 1.0f));
+	//Creates the ground
+	Plane* ground = new Plane(glm::vec2(0.0f, 1.0f), -50, glm::vec4(1.0f, 0.3f, 0.1f, 1.0f));
 
 	//Applies forces
 	  //ball1->applyForce(glm::vec2(21.0f, 0.0f));
