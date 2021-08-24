@@ -12,12 +12,13 @@ bool PhysicsGame::startup()
 {
 	//Sets the maximum # of lines, triangles, 2d lines, etc...
 	aie::Gizmos::create(225U, 225U, 65535U, 65535U);
-
 	m_renderer = new aie::Renderer2D();
-	setBackgroundColour(0.8f, 0.0f, 1.7f);
-
 	m_font = new aie::Font("../bin/font/consolas.ttf", 32);
 
+	//Sets the background color
+	setBackgroundColour(0.8f, 0.0f, 1.7f);
+
+	//Sets the scene and time
 	m_scene = new PhysicsScene();
 	m_scene->setTimeStep(0.01f);
 
@@ -26,7 +27,7 @@ bool PhysicsGame::startup()
 	
 
 	//Creates the balls
-	Sphere* ball1 = new Sphere(glm::vec2(-25, 0), glm::vec2(), 100, 10, glm::vec4(2.8f, 2.0f, 5.0f, 1.0f));
+	Sphere* ball1 = new Sphere(glm::vec2(-25, 0), glm::vec2(), 1, 10, glm::vec4(2.8f, 2.0f, 5.0f, 1.0f));
 	Sphere* ball2 = new Sphere(glm::vec2(25, 0), glm::vec2(), 2, 10, glm::vec4(1.9f, 0.0f, 0.0f, 1.9f));
 
 	//Creates the ground
