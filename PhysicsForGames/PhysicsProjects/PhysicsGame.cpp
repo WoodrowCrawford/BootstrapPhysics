@@ -28,7 +28,13 @@ bool PhysicsGame::startup()
 
 	//Creates the balls
 	Sphere* ball1 = new Sphere(glm::vec2(-25, 0), glm::vec2(), 1, 10, glm::vec4(2.8f, 2.0f, 5.0f, 1.0f));
-	Sphere* ball2 = new Sphere(glm::vec2(25, 0), glm::vec2(), 2, 10, glm::vec4(1.9f, 0.0f, 0.0f, 1.9f));
+	Sphere* ball2 = new Sphere(glm::vec2(25, 0), glm::vec2(), 2, 10, glm::vec4(1.9f, 0.0f, 0.0f, 1.0f));
+	Sphere* ball3 = new Sphere(glm::vec2(25, -30), glm::vec2(), 2, 10, glm::vec4(1.9f, 0.0f, 0.0f, 1.0f));
+	Sphere* ball4 = new Sphere(glm::vec2(10, -30), glm::vec2(), 2, 10, glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
+
+
+
+
 
 	//Creates the ground
 	Plane* ground = new Plane(glm::vec2(0.0f, 1.0f), -50, glm::vec4(1.0f, 0.3f, 0.1f, 1.0f));
@@ -43,6 +49,13 @@ bool PhysicsGame::startup()
 	//Adds the balls to the scene
 	m_scene->addActor(ball1);
 	m_scene->addActor(ball2);
+	m_scene->addActor(ball3);
+	m_scene->addActor(ball4);
+
+	
+	
+
+
 	
 
 	//Adds the plane to the scene
