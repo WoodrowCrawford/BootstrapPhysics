@@ -126,7 +126,7 @@ bool PhysicsScene::sphereToPlane(PhysicsObject* object1, PhysicsObject* object2)
 
 		if (sphereToPlaneDistance <= 0)
 		{
-			sphere->applyForce(-sphere->getVelocity() * sphere->getMass());
+			sphere->applyForce(-sphere->getVelocity() * sphere->getMass() );
 			return true;
 		}
 	}
