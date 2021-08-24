@@ -150,6 +150,7 @@ bool PhysicsScene::sphereToSphere(PhysicsObject* object1, PhysicsObject* object2
 		//If the distance is less than the combined radii, theres a collision
 		if (glm::abs(distance) < sphere1->getRadius() + sphere2->getRadius())
 		{
+			sphere1->resolveCollision(sphere2);
 			//A way to do it in one line
 			//Makes the balls apply a force to each other with a given value
 			//sphere1->applyForceToOther(sphere2, { 12.0f, 12.0f });
