@@ -31,3 +31,26 @@ void Plane::draw()
 
 	aie::Gizmos::add2DLine(start, end, m_color);
 }
+
+void Plane::resolveCollision(RigidBody* other)
+{
+	//j = ((-(1 + e) * Vrel) dot n) / (n dot (n * (1 / MA + 1 / MB))
+	//j is the impulse magnitude
+	//e is the coefficient of elasticity
+	//Vrel is the relative velocity before collision
+	//n is the collision normal
+	//MA is the mass of object A
+	//MB is the mass of object B
+
+	float elasticity = 1.0f;
+	glm::vec2 relativeVelocity = other->getVelocity();
+	glm::vec2 collisionNormal = getNormal();
+
+	float massB = other->getMass();
+
+	float impulse = glm::dot((-(1 + elasticity) * relativeVelocity), collisionNormal)
+		/ glm::dot(collisionNormal, (collisionNormal * (1 / massB)));
+
+	other->applyForce(collisionNormal * impulse);
+}
+
