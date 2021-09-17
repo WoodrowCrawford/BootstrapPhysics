@@ -33,9 +33,6 @@ bool PhysicsGame::startup()
 	Sphere* ball4 = new Sphere(glm::vec2(30, -30), glm::vec2(), 2, 10, glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
 
 
-
-
-
 	//Creates the ground
 	Plane* ground = new Plane(glm::vec2(0.0f, 1.0f), -50, glm::vec4(1.0f, 0.3f, 0.1f, 1.0f));
 
