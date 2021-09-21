@@ -53,3 +53,4 @@ void RigidBody::resolveCollision(RigidBody* other)
 
 	applyForceToOther(other, collisionNormal * impulse);
 }
+

@@ -14,6 +14,8 @@ bool PhysicsGame::startup()
 	aie::Gizmos::create(225U, 225U, 65535U, 65535U);
 	m_renderer = new aie::Renderer2D();
 	m_font = new aie::Font("../bin/font/consolas.ttf", 32);
+	/////////////////////////////////////////////////////////
+
 
 	//Sets the background color
 	setBackgroundColour(0.8f, 0.0f, 1.7f);
@@ -41,27 +43,19 @@ bool PhysicsGame::startup()
 	  //ball2->applyForce(glm::vec2(-21.0f, 0));
 
 
-	
-
 	//Adds the balls to the scene
 	m_scene->addActor(ball1);
 	m_scene->addActor(ball2);
 	m_scene->addActor(ball3);
 	m_scene->addActor(ball4);
 
-	
-	
-
-
-	
-
 	//Adds the plane to the scene
 	m_scene->addActor(ground);
-
 
 	return true;
 }
 
+//Deletes the given variables
 void PhysicsGame::shutdown()
 {
 	delete m_font;
@@ -78,6 +72,7 @@ void PhysicsGame::update(float deltaTime)
 
 	m_scene->update(deltaTime);
 
+
 	//Exit on Esc
 	if (input->isKeyDown(aie::INPUT_KEY_ESCAPE)) 
 	{
@@ -87,6 +82,7 @@ void PhysicsGame::update(float deltaTime)
 
 void PhysicsGame::draw()
 {
+	//Clear the screen
 	clearScreen();
 
 	m_renderer->begin();
