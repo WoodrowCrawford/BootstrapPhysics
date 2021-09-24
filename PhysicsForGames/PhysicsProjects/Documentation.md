@@ -32,33 +32,35 @@
 
 - ## Variables:
   - ### aie::Renderer2D* m_renderer:
-           insert description here
+           A variable that is used to render 2d objects to the scene.
 
   - ### aie::Font* m_font:
-            insert description here
+            This variable is used to get the font type.
 
   - ### PhysicsScene* m_scene:
-             insert description here
+             A variable that is used to get the scene.
  
 
 - ## Functions:
   - ## PhysicsGame():
-              insert description here
+              A function that creates the PhysicsGame Class.
 
   - ## virtual ~PhysicsGame():
-              insert description here
+              This function is a deconstructor for PhysicsGame().
 
   - ## virtual bool startup():
-              insert description here
+              This function is the main thing that the program 
+              does when it starts up.
 
   - ## virtual void shutdown():
-              insert description here
+              This function runs whenever the program has ended.
 
   - ## virtual void update(*float deltaTime*):
-              insert description here
+              This is a function that constantly updates while the 
+              program is running.
 
   - ## virtual void draw():
-              insert description here
+              This function draws the objects to the screen.
 
 ---
 
@@ -66,24 +68,30 @@
  #  Physics Object:
 - ## Variables:
   - ### ShapeType m_shapeID:
-              insert Description here
+              This variable is used to give the shapes a 
+              shape type.
 
 
 - ## Functions:
   - ### PhysicsObject(ShapeType shapeID) : m_shapeID(shapeID):
-              insert description here
+              This is a function that creates the shapes with
+              the given shapeID.
 
   - ### virtual void fixedUpdate(glm::vec2  gravity, float timeStep):
-              insert here
+               A virtual function that constantly updates. It is used
+               for keeping track of the gravity and the speed
+               of the program.
 
   - ### virtual void draw():
-              insert here
+              A virtual function that is used to draw objects on the
+              screen. 
 
   - ### virtual void resetPosition():
-              insert here
+              A virtual function that resets the position of the
+              objects.
 
   - ### ShapeType getShapeID():
-              insert here
+              A function that returns the shapeID type.
 
 ---
 
@@ -91,72 +99,90 @@
 
 - ## Variables:
   - ### glm::vec2 m_gravity:
-              insert here
+              A variable that is used to keep track of the 
+              gravity in the program.
 
   - ### float m_timeStep:
-              insert here
+              A variable that is used to keep track of the 
+              time speed in the program.
 
   - ### std::set<PhysicsObject*> m_actors:
-              insert here
+              A variable that is used to keep track of the
+              actors in the program.
 
 
 - ## Functions:
   - ### PhysicsScene():
-              insert here
+              A funciton that creates the Physics scene with a given
+              gravity and time step value.
 
   - ### ~PhysicsScene():
-              insert here
+              A deconstructor for the PhysicsScene().
 
   - ### void addActor(PhysicsObject* actor):
-              insert here
+              A function that adds an actor to the PhysicsScene() by
+              using the PhysicsObject() class.
 
   - ### void removeActor(PhysicsObject* actor):
-              insert here
+              A function that removes an actor from the PhysicsScene
+              by using the PhysicsObject() class.
 
   - ### void update(float deltaTime):
-              insert here
+              A funtion that updates constantly. It is used to
+              update the actors and collision detection.
 
   - ### void draw():
-              insert here
+              A function that is used to draw the objects on the 
+              screen.
 
   - ### void setGravity(const glm::vec2 gravity):
-              insert here
+              A function that sets the variable m_gravity to a
+              given value.
 
   - ### glm::vec2 getGravity() const:
-              insert here
+              A function that gets the variable m_gravity.
 
   - ### void setTimeStep(const float timeStep)
-              insert here
+              A function that sets the variable m_timeStep to a given value.
 
   - ### float getTimeStep() const:
-              insert here
+              A function that gets the variable m_timeStep.
 
   - ### static bool planeToPlane(PhysicsObject* object1, PhysicsObject* object2):
-              insert here
+              A function that checks collision between a plane
+              and a plane.
 
   - ### static bool planeToSphere(PhysicsObject* object1, PhysicsObject* object2):
-              insert here
+              A function that checks collision between a plane
+              and a sphere.
 
   - ### static bool planeToBox(PhysicsObject* object1, PhysicsObject* object2):
-              insert here
+              A function that checks collision between a plane
+              and a box.
 
   - ### static bool sphereToPlane(PhysicsObject* object1, PhysicsObject* object2):
-              insert here
+              A function that checks collision between a sphere
+              and a plane.
 
   - ### static bool sphereToSphere(PhysicsObject* object1, PhysicsObject* object2):
-              insert here
+              A function that checks collision between a sphere
+              and a sphere.
 
   - ### static bool sphereToBox(PhysicsObject* object1, PhysicsObject* object2):
-              insert here
+              A function that checks collision between a sphere
+              and a box.
 
   - ### static bool boxToPlane(PhysicsObject* object1, PhysicsObject* object2):
-              insert here
+              A function that checks collision between a box
+              and a plane.
 
   - ### static bool boxToSphere(PhysicsObject* object1, PhysicsObject* object2):
-              insert here
+              A function that checks collision between a box
+              and a sphere.
 
   - ### static bool boxToBox(PhysicsObject* object1, PhysicsObject* object2):
-              insert here
+              A function that checks collision between a box
+              and a box.
 
 
 ---
@@ -165,89 +191,106 @@
 
 - ## Variables:
   - ### glm::vec2 m_normal:
-              insert here
+              A variable that is used to normal of a vector2.
 
   - ### float m_distance:
-              insert here
+              A variable that is used to calculate the distance.
 
   - ### glm::vec4 m_color:
-              insert here
+              A variable that is used to set the color of objects.
 
 
 - ## Functions:
   - ### Plane(glm:vec2 normal, float distance, glm::vec4 color):
-              insert here
+              This is a function that creates a plane at a given 
+              distance and with a given color.
 
 
   - ### ~Plane():
-             insert here
+              This function is a deconstructor for the Plane()
+              function.
 
   - ### virtual void fixedUpdate(glm::vec2 gravity, float timeStep):
-             insert here
+             This is a virtual function that constantly updates
+             while the program is running. Used for things like 
+             updating gravity values and the speed of the program.
 
   - ### virtual void draw():
-             insert here
+              A virtual function that is used to draw objects
+              to the scene.
 
   - ### void resolveCollision(RigidBody* other):
-             insert here
+              A function that sets the elasticity of the rigid bodies
+              that collided with each other.
 
   - ### glm::vec2 getNormal():
-             insert here
+               A function that returns the variable m_normal.
 
   - ### float getDistance():
-             insert here 
+              A function that returns the variable m_distance.
 
   - ### glm::vec4 getColor():
-             insert here
+              A function that returns the variable m_color.
 
 ---
 
- # Plane:
+ # Rigid Body:
 
 - ## Variables:
   - ### glm::vec2 m_position:
-             insert here
+             A variable used for calculating the position of the 
+             rigid body.
 
   - ###  glm::vec2 m_velocity:
-             insert here
+             A variable used for calculating the velocity of the 
+             rigid body.
 
   - ### float m_mass:
-             insert here
+             A variable used for calculating the mass of the
+             rigid body.
 
   - ### float m_orientation:
-             insert here
+             A variable used for calculating the orientaion of the
+             rigid body.
 
 
 - ## Functions:
-  - ### RigidBody(ShapeType shapID, glm::vec2 position, glm::vec2 velcity, float orientation, float mass):
-            insert here
+  - ### RigidBody(ShapeType shapID, glm::vec2 position, glm::vec2 velocity, float orientation, float mass):
+            A function that creates a rigid body with a given shape,
+            position, velocity, orientation, and mass.
 
   - ### ~RigidBody():
-            insert here
+            A function that is a deconstructor for RigidBody().
 
   - ### virtual void fixedUpdate(glm::vec2 gravity, float timeStep):
-            insert here
+            A virtual function that constantly updates while the 
+            program is running. Used to update things like
+            gravity, collision detection, and the speed of
+            the program.
 
   - ### void applyForce(glm::vec2 force):
-            insert here
+            A function that applies a force with the variable
+            m_force.
 
   - ### void applyForceToOther(RigidBody* other, glm::vec2 force):
-            insert here
+            A function that applies a force to another rigid body
+            with the variable m_force.
 
   - ### void resolveCollision(RigidBody* other):
-            insert here
+            A function that sets the elasticity of the rigid bodies
+              that collided with each other.
 
   - ###  glm::vec2 getPosition():
-            insert here
+            A function that gets the variable m_position.
 
   - ### glm::vec2 getVelocity():
-            insert here
+            A function that gets the variable m_velocity.
 
   - ### float getOrientation():
-            insert here
+            A function that gets the variable m_orientation.
 
   - ### float getMass():
-            insert here
+            A function that gets the variable m_mass.
 
 ---
 
@@ -256,24 +299,32 @@
 
 - ## Variables:
   - ### float m_radius:
-            insert here 
+            A variable that is used for calculating the radius
+            of the sphere.
 
   - ### glm::vec4 m_color:
-            insert here 
+            A variable that is used for changing the color
+            of the sphere
 
 
 - ## Functions:
   - ### Sphere(glm::vec2 position, glm::vec2 velocity, float mass, float radius, glm::vec4 color):
-           insert here
+            A function that creates a sphere with a given position,
+            velocity, mass, radius, and color.
+   
 
   - ### ~Sphere():
-           insert here 
+           A function that is a deconstructor for the Sphere()
+           function.
 
   - ### virtual void draw():
-           insert here
+           A virtual function that is used to draw the objects
+           onto the screen.
 
   - ### float getRadius():
-           insert here
+           A function that gets the variable m_radius.
 
   - ### glm::vec4 getColor():
-           insert here
+           A function that gets the variable m_color.
+
+---
