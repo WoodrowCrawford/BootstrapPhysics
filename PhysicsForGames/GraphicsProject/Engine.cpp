@@ -28,7 +28,7 @@ int Engine::run()
 		return exitCode;
 	}
 
-	//Update
+	//Update and draw
 	while (!getGameOver()) {
 		exitCode = update();
 		if (exitCode) {
@@ -73,6 +73,28 @@ int Engine::start()
 	int majorVersion = ogl_GetMajorVersion();
 	int minorVersion = ogl_GetMinorVersion();
 	printf("OpenGL version %i.%i\n", majorVersion, minorVersion);
+
+
+	//Initialize the shader
+	m_shader.loadShader(
+		aie::eShaderStage::VERTEX,
+		"simpleVert.shader"
+	);
+
+	m_shader.loadShader(
+		aie::eShaderStage::FRAGMENT,
+		"simpleFrag.shader"
+	);
+
+	if (!m_shader.link())
+	{
+		printf("Shader Error: %s\n", m_shader.getLastError());
+		return -10;
+	}
+
+	//Initialize the quad
+	m_quad.start();
+
 	return 0;
 }
 
@@ -89,6 +111,12 @@ int Engine::draw()
 	if (!m_window) return -5;
 
 	glfwSwapBuffers(m_window);
+
+	m_shader.bind();
+
+	m_quad.draw();
+
+
 	return 0;
 }
 
