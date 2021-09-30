@@ -1,4 +1,5 @@
 #include "Engine.h"
+#include "glm\ext.hpp"
 #include "gl_core_4_4.h"
 #include "GLFW/glfw3.h"
 #include <iostream>
@@ -95,6 +96,21 @@ int Engine::start()
 	//Initialize the quad
 	m_quad.start();
 
+
+	//Create camera transforms
+	m_viewMatrix = glm::lookAt(
+		glm::vec3(10.0f, 10.0f, 10.0f),
+		glm::vec3(0.0f),
+		glm::vec3(0.0f, 1.0f, 0.0f)
+
+	);
+	m_projectionMatrix = glm::perspective(
+		glm::pi<float>() / 4.0f,
+		(float)m_width / (float)m_height,
+		0.001f,
+		1000.0f
+	);
+	
 	return 0;
 }
 
@@ -110,11 +126,17 @@ int Engine::draw()
 {
 	if (!m_window) return -5;
 
-	glfwSwapBuffers(m_window);
+	//clear the screen
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	m_shader.bind();
 
+	glm::mat4 projectionViewModel = m_projectionMatrix * m_viewMatrix * m_quad.getTransform();
+	m_shader.bindUniform("projectionViewModel", projectionViewModel);
+
 	m_quad.draw();
+
+	glfwSwapBuffers(m_window);
 
 
 	return 0;
@@ -131,7 +153,7 @@ int Engine::end()
 
 bool Engine::getGameOver()
 {
-	if (!m_window) return true;
+	if (!m_window) return -6;
 
 	bool gameIsOver = glfwWindowShouldClose(m_window);
 	gameIsOver = gameIsOver || glfwGetKey(m_window, GLFW_KEY_ESCAPE) == GLFW_PRESS;

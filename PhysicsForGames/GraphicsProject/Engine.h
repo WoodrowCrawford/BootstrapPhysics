@@ -28,4 +28,9 @@ private:
 	
 	aie::ShaderProgram m_shader;
 	Mesh m_quad;
+
+
+	glm::mat4 m_viewMatrix;
+	glm::mat4 m_projectionMatrix;
+
 };
