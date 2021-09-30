@@ -10,6 +10,7 @@ Engine::Engine() : Engine(1280, 720, "Window")
 
 Engine::Engine(int width, int height, const char* title)
 {
+	m_world = new World(width, height);
 	m_width = width;
 	m_height = height;
 	m_title = title;
@@ -17,6 +18,7 @@ Engine::Engine(int width, int height, const char* title)
 
 Engine::~Engine()
 {
+	delete m_world;
 }
 
 int Engine::run()
@@ -93,21 +95,7 @@ int Engine::start()
 		return -10;
 	}
 
-	//Initialize the quad
-	m_quad.start();
-
-	//Create camera transforms
-	m_viewMatrix = glm::lookAt(
-		glm::vec3(10.0f, 10.0f, 10.0f),
-		glm::vec3(0.0f),
-		glm::vec3(0.0f, 1.0f, 0.0f)
-	);
-	m_projectionMatrix = glm::perspective(
-		glm::pi<float>() / 4.0f,
-		(float)m_width / (float)m_height,
-		0.001f,
-		1000.0f
-	);
+	m_world->start();
 
 	return 0;
 }
@@ -117,6 +105,9 @@ int Engine::update()
 	if (!m_window) return -4;
 
 	glfwPollEvents();
+
+	m_world->update();
+
 	return 0;
 }
 
@@ -129,11 +120,10 @@ int Engine::draw()
 
 	m_shader.bind();
 
-	glm::mat4 projectionViewModel = m_projectionMatrix * m_viewMatrix * m_quad.getTransform();
+	glm::mat4 projectionViewModel = m_world->getProjectionViewModel();
 	m_shader.bindUniform("projectionViewModel", projectionViewModel);
 
-	m_quad.draw();
-
+	m_world->draw();
 	glfwSwapBuffers(m_window);
 
 	return 0;
@@ -142,6 +132,8 @@ int Engine::draw()
 int Engine::end()
 {
 	if (!m_window) return -6;
+
+	m_world->end();
 
 	glfwDestroyWindow(m_window);
 	glfwTerminate();
