@@ -18,6 +18,10 @@ public:
 	void start();
 	void draw();
 
+	virtual Vertex* generateVertices(unsigned int& vertexCount, unsigned int& triCount) = 0;
+
+	
+
 	glm::mat4 getTransform() { return m_transform; }
 	void setTransform(glm::mat4 transform) { m_transform = transform; }
 

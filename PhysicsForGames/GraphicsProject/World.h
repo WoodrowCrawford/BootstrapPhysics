@@ -1,5 +1,5 @@
 #pragma once
-#include "Mesh.h"
+#include "Quad.h"
 class World
 {
 public:
@@ -18,7 +18,7 @@ public:
 private:
 	int m_width = 1280, m_height = 720;
 
-	Mesh m_quad;
+	Quad m_quad;
 
 
 	glm::mat4 m_viewMatrix;
