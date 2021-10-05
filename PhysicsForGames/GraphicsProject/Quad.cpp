@@ -25,6 +25,7 @@ Quad::Vertex* Quad::generateVertices(unsigned int& vertexCount, unsigned int& tr
 
 	for (int i = 0; i < vertexCount; i++) {
 		vertices[i].color = m_color;
+		vertices[i].normal
 	}
 
 	return vertices;

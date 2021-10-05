@@ -120,7 +120,7 @@ int Engine::draw()
 
 	m_shader.bind();
 
-	glm::mat4 projectionViewModel = m_world->getProjectionViewModel();
+	glm::mat4 projectionViewModel = m_world->getProjectionView();
 	m_shader.bindUniform("projectionViewModel", projectionViewModel);
 
 	m_world->draw();
