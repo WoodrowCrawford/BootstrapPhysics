@@ -9,7 +9,6 @@ public:
 	struct Vertex {
 		glm::vec4 position;
 		glm::vec4 color;
-		glm::vec4 normal;
 	};
 
 public:
@@ -20,8 +19,6 @@ public:
 	void draw();
 
 	virtual Vertex* generateVertices(unsigned int& vertexCount, unsigned int& triCount) = 0;
-
-	
 
 	glm::mat4 getTransform() { return m_transform; }
 	void setTransform(glm::mat4 transform) { m_transform = transform; }
