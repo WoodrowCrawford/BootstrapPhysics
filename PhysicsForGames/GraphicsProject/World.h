@@ -1,5 +1,6 @@
 #pragma once
 #include "Quad.h"
+#include "Camera.h"
 class World
 {
 public:
@@ -21,7 +22,7 @@ private:
 	Quad m_quad;
 
 
-	glm::mat4 m_viewMatrix;
+	Camera m_camera = Camera();
 	glm::mat4 m_projectionMatrix;
 
 

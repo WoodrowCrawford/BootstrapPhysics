@@ -78,7 +78,7 @@ int Engine::start()
 	printf("OpenGL version %i.%i\n", majorVersion, minorVersion);
 
 	//Initialize the screen
-	glClearColor(0.2f, 0.5f, 1.0f, 1.0f);
+	glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
 	glEnable(GL_DEPTH_TEST);
 
 	//Initialize the shader
@@ -124,6 +124,7 @@ int Engine::draw()
 	m_shader.bindUniform("projectionViewModel", projectionViewModel);
 
 	m_world->draw();
+
 	glfwSwapBuffers(m_window);
 
 	return 0;
