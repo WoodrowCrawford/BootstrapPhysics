@@ -10,6 +10,10 @@ World::World(int width, int height)
 
 void World::start()
 {
+	//Initialize the OBJ mesh
+	m_objMesh.load("Lucy.obj", false);
+
+
 	//Initialize the quad
 	m_quad.setTransform(glm::mat4(10.0f));
 	m_quad.setColor(glm::vec4(0.2f, 0.8f, 0.6f, 1.0f));
@@ -145,6 +149,7 @@ void World::draw(aie::ShaderProgram* shader)
 	shader->bindUniform("lightSpecular", m_light.getSpecular());
 	shader->bindUniform("specularPower", m_light.getSpecularPower());
 	m_quad.draw(shader);
+	shader->bindUniform("modelMatrix", m_objTransform);
 }
 
 void World::end()

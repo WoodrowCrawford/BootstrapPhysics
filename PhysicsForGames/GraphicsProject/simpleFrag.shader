@@ -5,6 +5,11 @@ in vec4 fPosition;
 in vec4 fColor;
 in vec3 fNormal;
 
+
+uniform vec3 Ka;
+uniform vec3 Kd;
+uniform vec3 Ks;
+
 uniform vec3 lightDirection;
 uniform vec4 lightAmbient;
 uniform vec4 lightDiffuse;
@@ -20,12 +25,12 @@ void main() {
 	vec3 lightNormal = normalize(lightDirection);
 
 	//Calculate ambient color
-	vec4 ambientColor = fColor * lightAmbient;
+	vec4 ambientColor = Ka * lightAmbient;
 
 	//Calculate diffuse color
 	float lambertTerm = dot(surfaceNormal, -lightNormal);
-	lambertTerm = max(0, min(1, lambertTerm));
-	vec4 diffuseColor = fColor * lightDiffuse * lambertTerm;
+	lambertTerm = max(0, min(1.0f, lambertTerm));
+	vec4 diffuseColor = vec4(Kd, 1.0f) * lightDiffuse * lambertTerm;
 
 	//Calculate specular color
 	vec3 surfaceToView = normalize(cameraPosition.xyz - fPosition.xyz);
@@ -33,7 +38,7 @@ void main() {
 	float specularTerm = dot(surfaceToView, reflectionNormal);
 	specularTerm = max(0, specularTerm);
 	specularTerm = pow(specularTerm, specularPower);
-	vec4 specularColor = fColor * lightSpecular * specularTerm;
+	vec4 specularColor = Ks * lightSpecular * specularTerm;
 
 	FragColor = ambientColor + diffuseColor + specularColor;
 }
