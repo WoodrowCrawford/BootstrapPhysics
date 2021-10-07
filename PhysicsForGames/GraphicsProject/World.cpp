@@ -11,13 +11,14 @@ void World::start()
 {
 	//Initialize the quad
 	m_quad.setTransform(glm::mat4(10.0f));
+	m_quad.setColor(glm::vec4(0.2f, 0.8f, 0.6f, 1.0f));
 	m_quad.start();
-
 	//Initialize the light
 	m_light.setDirection(glm::vec3(-1.0f));
 	m_light.setAmbient(glm::vec4(0.6f, 0.6f, 0.0f, 1.0f));
-	m_light.setDiffuse(glm::vec4(0.8f, 0.6f, 1.0f, 1.0f));
-	m_light.setSpecular()
+	m_light.setDiffuse(glm::vec4(0.6f, 0.6f, 1.0f, 1.0f));
+	m_light.setSpecular(glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
+	m_light.setSpecularPower(2.0f);
 
 	//Create camera transforms
 	m_camera.setTransform(glm::lookAt(
@@ -45,8 +46,7 @@ void World::draw(aie::ShaderProgram* shader)
 	shader->bindUniform("lightDiffuse", m_light.getDiffuse());
 	shader->bindUniform("lightSpecular", m_light.getSpecular());
 	shader->bindUniform("specularPower", m_light.getSpecularPower());
-
-	m_quad.draw();
+	m_quad.draw(shader);
 }
 
 void World::end()

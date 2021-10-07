@@ -24,4 +24,3 @@ private:
 	float m_nearClip = 0.001f;
 	float m_farClip = 1000.0f;
 };
-
