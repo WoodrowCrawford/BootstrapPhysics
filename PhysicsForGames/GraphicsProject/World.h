@@ -4,6 +4,10 @@
 #include "Quad.h"
 #include "Light.h"
 #include "glm/mat4x4.hpp"
+#include <GLFW\glfw3.h>
+
+
+struct GLFWwindow;
 
 class World
 {
@@ -12,11 +16,12 @@ public:
 	~World() {}
 
 	void start();
-	void update();
+	void update(double deltaTime);
 	void draw(aie::ShaderProgram* shader);
 	void end();
 
 	glm::mat4 getProjectionView();
+	void setWindow(GLFWwindow* window) { m_window = window; }
 
 private:
 	int m_width = 1280, m_height = 720;
@@ -25,4 +30,10 @@ private:
 
 	Quad m_quad;
 	Light m_light;
+
+	GLFWwindow* m_window = nullptr;
+	double m_currentMouseX = 0.0;
+	double m_currentMouseY = 0.0;
+	double m_previousMouseX = 0.0;
+	double m_previousMouseY = 0.0;
 };
