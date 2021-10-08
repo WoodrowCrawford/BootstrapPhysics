@@ -14,16 +14,12 @@ void World::start()
 	m_quad.start();
 
 	//Create camera transforms
-	m_camera.setTransform(glm::lookAt(
-		glm::vec3(1.0f, 1.0f, 1.0f),
-		glm::vec3(0.0f),
-		glm::vec3(0.0f, 1.0f, 0.0f)
-	));
-	m_projectionMatrix = glm::perspective(
-		m_camera.getFieldOfView() * glm::pi<float>() / 180.0f,
-		(float)m_width / (float)m_height,
-		m_camera.getNearClip(),
-		m_camera.getFarClip()
+	//m_camera.setTransform(glm::lookAt(
+		//glm::vec3(1.0f, 1.0f, 1.0f),
+		//glm::vec3(0.0f),
+		//glm::vec3(0.0f, 1.0f, 0.0f)
+	//));
+	m_camera.setPosition
 	);
 }
 
