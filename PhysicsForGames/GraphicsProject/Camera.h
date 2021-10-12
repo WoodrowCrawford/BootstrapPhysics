@@ -27,12 +27,12 @@ public:
 
 private:
 	//glm::mat4 m_transform = glm::mat4(1.0f);
-	glm::vec3 m_position{ 0.0f, 0.0f, 0.0f; }
-	float m_theta{ 0.0f; }
-	float m_phi{ 0.0f; }
+	glm::vec3 m_position{ 0.0f, 0.0f, 0.0f };
+	float m_theta{ 0.0f };
+	float m_phi{ 0.0f };
 
-	float m_fieldOfView = { 45.0f; }
-	float m_nearClip = { 0.001f; }
-	float m_farClip = { 1000.0f; }
+	float m_fieldOfView = { 45.0f };
+	float m_nearClip = { 0.001f };
+	float m_farClip = { 1000.0f };
 };
 

@@ -11,4 +11,5 @@ out vec4 pColor;
 
 void main() {
 	pColor = fColor * texture(diffuseTexture, fTexCoord);
+	pColor = fColor;
 }
